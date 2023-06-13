@@ -6,3 +6,7 @@ https://www.codewars.com/kata/search/javascript?q=&r%5B%5D=-8&tags=Fundamentals&
 
 ### Why?
 I need to work on solving many different kinds of problems and have a history of what I did and when could be beneficial, so here is that record.
+
+
+#### Testing links on my github:
+[.gitignore](.gitignore)
