@@ -2,10 +2,8 @@
 function countBy(x, n) {
   let z = [];
   for(let i = 1; z.length<n; i++){
-  	if(i%x===0){
-  		z.push(i)
-  	}
+  	z.push(i*x)
   }
   return z;
 }
-console.log(countBy(2,5))
+console.log(countBy(5, 10))
