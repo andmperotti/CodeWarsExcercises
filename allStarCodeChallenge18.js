@@ -10,4 +10,3 @@ function strCount(str, letter){
 }
 
 console.log(strCount('bananas', 'a'))
-console.log('bananas'.split('a'))
