@@ -16,4 +16,4 @@ var humanYearsCatYearsDogYears = function(humanYears) {
   }
   return [humanYears, catYears,dogYears];
 }
-console.log(humanYearsCatYearsDogYears(3))
+console.log(humanYearsCatYearsDogYears(8.5))
