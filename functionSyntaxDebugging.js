@@ -1,0 +1,11 @@
+//https://www.codewars.com/kata/56dae9dc54c0acd29d00109a
+/*Starter code:
+function main [verb, noun]
+  return verb + noun
+}
+*/
+
+/* my code */
+function main(verb, noun){
+  return verb + noun
+}
