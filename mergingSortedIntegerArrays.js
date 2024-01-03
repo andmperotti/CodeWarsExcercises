@@ -22,3 +22,11 @@ console.log(mergeArrays([1,2,4,3], [5,2,4,1,3]))
 
 //As I look at the voted best solution I see they used set with spread operator as well, and they wrote it cleaner, so I'll add this question to my Anki deck for further studying of the syntax of their use.
 //I see they created an array using set to remove duplicate values, then used sort on that resulting array.
+//Here is the best practice code:
+/*
+function mergeArrays(a, b) {
+  return [...new Set(a.concat(b))].sort((a,b)=>a-b);
+}
+/*
+//Just to add I think the spread operator is saying to the array literal brackets that to build the array it needs to iterate over the items in the set
+//Then the sort method sorts that array.
