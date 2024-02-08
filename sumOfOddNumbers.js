@@ -1,6 +1,7 @@
 //https://www.codewars.com/kata/55fd2d567d94ac3bc9000064
 
-//Given the triangle of consecutive odd numbers:
+// DESCRIPTION:
+// Given the triangle of consecutive odd numbers:
 
 //              1
 //           3     5
@@ -8,20 +9,18 @@
 //    13    15    17    19
 // 21    23    25    27    29
 // ...
-
-//Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
+// Calculate the sum of the numbers in the nth row of this triangle (starting at index 1) e.g.: (Input --> Output)
 
 // 1 -->  1
 // 2 --> 3 + 5 = 8
 
+//This is a review for a problem I failed before
+//The first time I wanted to make a recursive function but couldn't figure out how to achieve the outcome
+//Upon googling this problem I saw that it was related to a specific math theorem, for which I hadn't encountered in my life
+
 function rowSumOddNumbers(n) {
-	if(n==1){
-		return 1
-	}else{
-		return rowSumOddNumbers(n-1)
-	}
+	return Math.pow(n, 3)
 }
-rowSumOddNumbers(42)
-//base case = row with 1 in it
-//next would be the previous value plus 2 to it and then another plus 2 to it
-//next would be the previouse value plus 2 to it, then another plus 2 to it, then another plus 2 to it
+console.log(rowSumOddNumbers(42))
+
+//You could also return n*n*n, it's the same thing
