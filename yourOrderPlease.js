@@ -36,3 +36,47 @@ function order(words){
 //I liked the first function I described because it was easier to read, and usually easier to read means it's slower than nested for loop, atleast in the case of recursion, however both functions took the same amount of time to run.
 
 //I'll set a calendar date to attempt this challenge in a week without looking at either solution,
+
+
+
+
+//5/10/24 attempt
+//I did not look at anything above this
+
+// DESCRIPTION:
+// Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+
+// Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+
+// If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+// Examples
+// "is2 Thi1s T4est 3a"  -->  "Thi1s is2 3a T4est"
+// "4of Fo1r pe6ople g3ood th5e the2"  -->  "Fo1r the2 g3ood 4of th5e pe6ople"
+// ""  -->  ""
+
+
+//arguments are a string of words that contain an integer
+//output will be the string with the words in ascending order of those integers inside the words
+//an example from the description: "is2 Thi1s T4est 3a" => "Thi1s is2 3a T4est"
+
+
+
+
+function order(words){
+  //split the string into an array
+  let splitWords = words.split(' ')
+  //use nested for loops so that we can iterate over the array elements for as many elements as it has; 5 words would mean 25 iterations. Each iteration will check the integer value in the word against the first loops iterator variable, if the integer === iteration variable value then we'll add that word into a temporary array variable. We'll have to split each word as we bring it into the if statement and run filter on it to return 
+  let result = []
+  for(let i = 1; i<=splitWords.length; i++){
+    for(let j = 1; j<splitWords.length; j++){
+      if(splitWords[i].split('').filter(e=>Number.isInteger(e))===i){
+        result.push(splitWords[i].filter(e=>Number.isInteger(e)))
+      }
+    }
+  }
+  //join() the temp array into a string and return it
+  return result.join(' ')
+}
+console.log(order("is2 Thi1s T4est 3a"))
+//this code didn't work, and I ran out of time, will try again next week sometime. I thought I recalled this function using nested for loops, but no it builds a function expression and then uses it inside sort().
