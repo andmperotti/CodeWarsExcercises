@@ -27,29 +27,29 @@
 //argument is an integer, which represents the number of floors to build in the tower
 //output will be an array of strings, these strings represent floors of the tower, so if asked for 3 our output would be an array consisting of 3 elements: '*','***','*****'
 
-function towerBuilder(nFloors) {
-	//build a temp variable that will hold the floors; this is an array that will be returned at the end of the function
-	let resultTower = []
-	//build the floor via a for loop that runs until the tower has as many floors as the argument asks for
-		//to populate each floor with the appropriate amount of asterisks we'll use a temp variable to start the floors with one * and then increment it by 2 per each floor. 
-			//For the spacing to center the floors populance we'll use padStart and padEnd and we'll pass them an expression of nfloors times two minus 1 which gives the populance count for the last floor, then subtract from that the count of the populance on that floor and divide by two giving us the proper number of spaces in front and behind in the populance to pass to padStart and padEnd
-	let populater = 1
-	for(let i = 1; i<=nFloors; i++){
-		//create floor and populate with asterisks needed
-		let floor = '*'.repeat(populater)
-		//add starting space
-		floor=floor.padStart((nFloors*2-1-populater)/2)
-		//add ending space
-		floor=floor.padEnd((nFloors*2-1-populater)/2)
-		//push floor to array
-		resultTower.push(floor)
-		//increment asterisk counter
-		populater+=2
-	}
-	//return the array
-	return resultTower
-}
-console.log(towerBuilder(5))
+// function towerBuilder(nFloors) {
+// 	//build a temp variable that will hold the floors; this is an array that will be returned at the end of the function
+// 	let resultTower = []
+// 	//build the floor via a for loop that runs until the tower has as many floors as the argument asks for
+// 		//to populate each floor with the appropriate amount of asterisks we'll use a temp variable to start the floors with one * and then increment it by 2 per each floor. 
+// 			//For the spacing to center the floors populance we'll use padStart and padEnd and we'll pass them an expression of nfloors times two minus 1 which gives the populance count for the last floor, then subtract from that the count of the populance on that floor and divide by two giving us the proper number of spaces in front and behind in the populance to pass to padStart and padEnd
+// 	let populater = 1
+// 	for(let i = 1; i<=nFloors; i++){
+// 		//create floor and populate with asterisks needed
+// 		let floor = '*'.repeat(populater)
+// 		//add starting space
+// 		floor=floor.padStart((nFloors*2-1-populater)/2)
+// 		//add ending space
+// 		floor=floor.padEnd((nFloors*2-1-populater)/2)
+// 		//push floor to array
+// 		resultTower.push(floor)
+// 		//increment asterisk counter
+// 		populater+=2
+// 	}
+// 	//return the array
+// 	return resultTower
+// }
+// console.log(towerBuilder(5))
 //I couldn't get padEnd to add to the back of each string, I had previously chained the padEnd after calling padStart and thought that was a problem, but here it's still not working... I've ran out of time and am going to look at the solutions...
 
 //the two best answers:
@@ -75,3 +75,40 @@ console.log(towerBuilder(5))
 //before this challenge I didn't know that Array.from() had a second argument, which is a function that is run on each element of the array built from the first argument.
 
 //I'll try this challenge again in a week or two.
+
+
+
+
+
+
+
+
+//5/22 attempt:
+
+//argument is an integer that represents the number of floors in the tower we'll build
+//output is the theoretical tower, which is actually an array of strings when printed on new lines should look like a tower
+//example: 3=> [
+//'  *  ',
+//' *** ',
+//'*****'
+//]
+
+
+function towerBuilder(nFloors) {
+	//buil a temp array that will be the return object of this function
+	let resultTower = []
+	//create another temp variable to keep track of *'s, which are used to fill in levels of the tower in incrementing fashion
+	let asteriskCounter = 1
+	//use a for loop to iterate nFloors amount of times and create a string made up of the current asteriskCounter value and concatenate space before and after the asterisk/s in the amount of (nfloors*2-1-asteriskCounter)/2 for each the leading and trailing space string,that'll be pushed into the temp array. 
+	for(let i =1; i<=nFloors; i++){
+		resultTower.push(`${' '.repeat((nFloors*2-1-asteriskCounter)/2)}${'*'.repeat(asteriskCounter)}${' '.repeat((nFloors*2-1-asteriskCounter)/2)}`)
+		asteriskCounter+=2
+	}
+	//return array object
+	return resultTower
+}
+console.log(towerBuilder(5))
+//this worked, I remembered one of the best practice answers used string concatenation, so I knew to build three separate strings to reach the result.
+console.log()
+towerBuilder(5).forEach(row=>console.log(row))
+//here's another way to output it without the quotations around the string elements in the array or the square brackets symbolizing the array.
