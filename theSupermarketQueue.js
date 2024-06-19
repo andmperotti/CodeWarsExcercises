@@ -122,3 +122,36 @@
 //just reviewed the best practice answer, and changed their variable names to the ones I was using to let my brain diffuse what it's doing, will try again tomorrow or later this week
 
 
+
+
+
+
+
+
+//6/19 attempt
+
+//arguments are an array of integers which repersents customers in a queue and the amount of time it takes for them to finish self checking their products, the second argument is an integer which represents the number of self checkout tils at the store
+//output will be an integer representing the total time it took to process the customers in the queue through the stores til/s
+//example: ([5,3,4],1)=>9, ([10,2,3,3],2)=>10
+
+function queueTime(customers, n) {
+	//create an array of tils, using the n argument
+	let tils = new Array(n).fill(0)
+	//using the array of tils, iterate over the customers in the queue and place them in the til that will be available soonest
+	customers.forEach((c,i)=>tils[tils.indexOf(Math.min(...tils))]+=customers[i])
+	//return the amount of time it'll take to empty the queue and process the customers through the tils by returning the highest value in any of the tils (since we preloaded the tils with the correct customer order, the  highest value til will be the maximum amount of time needed for the entire process to complete)
+	return Math.max(...tils)
+}
+console.log(queueTime([10,2,3,3],2))
+
+//This code worked, however there's better syntax to use:
+// function queueTime(customers, n) {
+//   var w = new Array(n).fill(0);
+//   for (let t of customers) {
+//     let idx = w.indexOf(Math.min(...w));
+//     w[idx] += t;
+//   }
+//   return Math.max(...w);
+// }
+//this best practice answer use a for loop not forEach which allowd easier to read code, however at the price of more lines.
+//They created an array using the same logic I did. They used a for loop and set a variable of 't' to represent each customer, then crated a variable that held the index of the lowest til up to that point and then used that vairable to add the customer to that til using the array vairable square brackets around the variable that found the next lowest and added in the customer. They returned the maximum value of the til array.
