@@ -23,7 +23,62 @@ function meeting(s) {
 	s.forEach(e=>e.join(','))
 	//we'll join and return the array back into a string 
 }
-meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
+// meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
 
 
 //I had to give up today on this, will try again next week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+//attempt #2, didn't look at anything above this line
+
+
+//argument is a string of names that are separated by ;'s and the first and last name of each person are separated by :'s, and looks like the first letter of each first and last will be capitalized
+//output will be a string made up the same people, whose names are now all uppercase, sorted by last name, and if same last name then sorted by first name, and instead of separating people using ;'s we'll encapsulate them in parenthses and separate their last and first name with a comma space.
+//examples: "Alexis:Wahl;John:Bell;Victoria:Schwarz;Abba:Dorny;Grace:Meta;Ann:Arno;Madison:STAN;Alex:Cornwell;Lewis:Kern;Megan:Stan;Alex:Korn" => "(ARNO, ANN)(BELL, JOHN)(CORNWELL, ALEX)(DORNY, ABBA)(KERN, LEWIS)(KORN, ALEX)(META, GRACE)(SCHWARZ, VICTORIA)(STAN, MADISON)(STAN, MEGAN)(WAHL, ALEXIS)") , "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill" => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+
+
+
+//to sort the names, we'll have to change the argument into an array of names [Last]
+//if we turn the string into an array and after we're done using array methods, we can use replace to change the []'s to ()'s
+
+//we'll use map to change each element to capital letters
+//we'll return the joined array elements as a string using parenthese as the glue.
+
+
+
+function meeting(s) {
+	let splitS = s.replace(':', " ").split(';')
+	console.log(splitS)
+
+}
+meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
