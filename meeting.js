@@ -1,7 +1,7 @@
 //https://www.codewars.com/kata/59df2f8f08c6cec835000012
 
 //argument will be a string of first and last names, each first and last name separated with a colon, each pair separated with a comma.
-//output will be a sorted string, all uppercase letters, sorted by last name, but when the last names are the same then sort by the first name, also each pair of names will be inside parentheses and have a comma space between the last and first name, there won't be any delimiter between pairs inside this string this time.
+//output will be a sorted string, all uppercase letters, sorted by last name, but when the last names are the same then sort by the first name, also each pair of names will be inside parentheses and have a comma space between the last and first name, there won't be any separator between pairs inside this string this time.
 //example: "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill" => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
 
 
@@ -10,7 +10,7 @@ function meeting(s) {
 	s=s.toUpperCase()
 	//we'll split the string into an array, and get rid of the ;'s at the same time, and reassign the result to s
 	s=s.split(";")
-	//using iteration via map, we'll then need replace to change the ;'s into commas and then since we to make sub arrays of each name so we can check last names more easily we'll use the comma's as the delimiter in split, and reassign it to the s variable
+	//using iteration via map, we'll then need replace to change the ;'s into commas and then since we to make sub arrays of each name so we can check last names more easily we'll use the comma's as the separator in split, and reassign it to the s variable
 	s=s.map(e=>e.split(":"))
 	//we're going to use sort() and target the last name, using a ternary condition inside the sort we'l have a check for when the last names are equal and then sort with the first name values.
 	s.sort((a,b)=>a[1]===b[1] ? a[0]-b[0] : a[1]-b[1])
@@ -57,14 +57,70 @@ function meeting(s) {
 
 
 
-function meeting(s) {
-	let splitS = s.replace(':', " ").split(';')
-	console.log(splitS)
+// function meeting(s) {
+// 	let splitS = s.replace(':', " ").split(';')
+// 	console.log(splitS)
 
-}
-meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
+// }
+// meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//7/1/24 attempt, did not look at code above this line.
+
+
+//argument is a string of full names, "First:Last;First:Last;etc" , so a string of names each first and last's first character is capitalized, each first and last is separated by a :, each entry is separated by the next using a ;
+//output will be a string where each persons name is encloses using parentheses, each name first and last is all capitalized, and a comma space is used to separate each persons (LAST, FIRST), also the first and last name of a person swap order, and finally we'll sort the order of people by last name, and if the last name is the same between 2 people, we'll use their first names.
+//example: "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill" => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+
+
+// function meeting(s) {
+// 	// split the s argument into an array using ;'s as the separator between each element, reassign that value to s (commas separated string values)
+// 	s=s.split(';')
+// 	//using map we'll reassign s to be the output of invoking the map method on the argument array, its callback will change each persons name into a sub array and use the :'s as the separator, we can also capitalize each letter in the persons sub arrays (array of arrays([[Rubio, Bob]]))
+// 	s=s.map(e=>e.toUpperCase().split(':'))
+// 	//then we'll sort the order of the elements in the s array variable by using a sort algortihm targeting their last names [1] unless their last names  are the same then their first names [0] ()
+// 	s=s.sort((a,b)=>a[1]-b[1])
+// 	//then we'll use map with reverse to swap each persons name order, and then turn them back into strings using a comma as the glue to the join method
+// 	s=s.map(e=>e.reverse())
+// 	//then we'll join the array of s back into a string
+// 	s=s.join('(')
+// 	// s=s.map(e=>e.replace('[',')').replace(']',')'))
+// 	console.log(s)
+
+// }
+// meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
+
+//i failed it again, lets look at the best practice answer and dissect it:
+// function meeting(s) {
+//   let string = s.toUpperCase().split(';')
+//                 .map(x => x.split(':').reverse().join(', '))
+//                 .sort()
+//                 .join(')(')
+//   return '(' + string + ')'
+// }
+//the function creates a variable and chains methods off it immediately;
+//first it changes all letters to upper case then it splits it into an array of people strings, using ; as the separator. Then they use map to iterate over each element in the array which splits those elements into sub arrays using ':' as the separator, then reverses their order and joing them using ', ' as the glue, thus createing a string like 'Bob, Rubio'. Then it sorts them using the default alphabetic sorting function. Then joins the elements of the array together by using ')(' as the glue. Finally returns string while concatenating an opening parenthese to the front of it and a closing to the back of it. 
+
+//I will try this again sometime this week.
 
 
 
