@@ -16,3 +16,32 @@
 
 //this challenge description could have been a little clearer, they want us to return the total occurence of d in all of the squared results...
 //I'll try this again another day
+
+
+
+
+
+
+
+//7/5/2024 attempt, did not look at code from above.
+
+//arguments to this function (n, k) will be 2 integers, both >=0
+//output will be an integer which is the number of occurence of the second argument (k) that exist within the squaring of values from 0 up to and including n's value.
+//examples: (10,1)=>4, (25,1)=>11
+
+
+
+function nbDig(n, d){
+	//create the array of values from 0 to n, and square them, and turn them into strings
+	let nRange = Array.from({length: n+1}, (x,i)=>i)
+	nRange=nRange.map(e=>String(e*e))
+	//split the squared valued strings into sub arrays 
+	nRange=nRange.map(e=>e.split(''))
+	//flatten the sub arrays and then filter the elements to only have occurences of parameter d and then return the length of that array
+	return nRange.flat(Infinity).filter(e=>e==d).length
+}
+console.log(nbDig(5750,0))
+
+//I was misusing length: n, it should have been n+1, when you only use n as the value to the length property it's not inclusive of the value n holds.
+
+//My answer is different than the best practice answer but I think their answer might use less resources. Again it uses a for loop to create each square value one at a time and breaks each into an array and then counts the occurences usign a forEach loop on the split current value, and if an element of that value is == d then increments a temp variable which is the occurence count of d in all squared values of the range, otherwise passes null and the foreach continues looping.
