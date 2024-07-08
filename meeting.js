@@ -5,24 +5,24 @@
 //example: "Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill" => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
 
 
-function meeting(s) {
-	//we'll change everything to uppercase with toUpperCase(), and reassign to the s variable
-	s=s.toUpperCase()
-	//we'll split the string into an array, and get rid of the ;'s at the same time, and reassign the result to s
-	s=s.split(";")
-	//using iteration via map, we'll then need replace to change the ;'s into commas and then since we to make sub arrays of each name so we can check last names more easily we'll use the comma's as the separator in split, and reassign it to the s variable
-	s=s.map(e=>e.split(":"))
-	//we're going to use sort() and target the last name, using a ternary condition inside the sort we'l have a check for when the last names are equal and then sort with the first name values.
-	s.sort((a,b)=>a[1]===b[1] ? a[0]-b[0] : a[1]-b[1])
-		console.log(s)
-	//we'll add a beginning and closing parentheses to each sub array using unshift and push
-	s=s.forEach(e=>e[0].unshift('('))
-	s=s.forEach(e=>e[0].push(')'))
+// function meeting(s) {
+// 	//we'll change everything to uppercase with toUpperCase(), and reassign to the s variable
+// 	s=s.toUpperCase()
+// 	//we'll split the string into an array, and get rid of the ;'s at the same time, and reassign the result to s
+// 	s=s.split(";")
+// 	//using iteration via map, we'll then need replace to change the ;'s into commas and then since we to make sub arrays of each name so we can check last names more easily we'll use the comma's as the separator in split, and reassign it to the s variable
+// 	s=s.map(e=>e.split(":"))
+// 	//we're going to use sort() and target the last name, using a ternary condition inside the sort we'l have a check for when the last names are equal and then sort with the first name values.
+// 	s.sort((a,b)=>a[1]===b[1] ? a[0]-b[0] : a[1]-b[1])
+// 		console.log(s)
+// 	//we'll add a beginning and closing parentheses to each sub array using unshift and push
+// 	s=s.forEach(e=>e[0].unshift('('))
+// 	s=s.forEach(e=>e[0].push(')'))
 
-	//we'll use join() to create sub strings from each sub array and use commas as the glue
-	s.forEach(e=>e.join(','))
-	//we'll join and return the array back into a string 
-}
+// 	//we'll use join() to create sub strings from each sub array and use commas as the glue
+// 	s.forEach(e=>e.join(','))
+// 	//we'll join and return the array back into a string 
+// }
 // meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill")
 
 
@@ -127,6 +127,70 @@ function meeting(s) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+//7/8 attempt, again have not looked at code above here
+
+
+
+//argument is a string of full names where each first and last pair is separated by a : and people are separated by a ; , the format of the string looks to be that each first and last is first letter capitalized and everything else lower case.
+//output will be a string that is made up by an alphabetically sorted list using last names, and if last names are the same then using first names. Also the separator between the first and last name changes from : to a comma, and the order of the first and last are swapped. Separating each persons name is no longer a comma but parentheses around each persons last, first name, and all letters will be capitalized.
+//example: ("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill") => "(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)"
+
+// function meeting(s) {
+// 	//we'll use .toUpperCase on the argument to change all letters to upper case
+// 	s=s.toUpperCase()
+// 	//create an array of the people by using split() and the ; as the splitter
+// 	s=s.split(';')
+// 	//iterate over each element using map of that array and create sub arrays using the : as the splitter
+// 	s= s.map(e=>e.split(':'))
+// 	//iterate over each sub array and reverse its elements, thus swapping the first and last name in order by using the reverse method on the sub array
+// 	s=s.map(e=>e.reverse())
+// 	//sort the entire array by last name by targeting the [0] index element of each sub array which is now that persons last name
+// 	s.sort((a,b)=>a[0]-b[0])
+// 	// //sort the array again but this time by only checking whether last names are the same and if so telling the sorting function to use their first names instead, otherwise null
+// 	s.sort((a,b)=>a[0]===b[0] ? a[1]-b[1] : null)
+// 	// //iterate over the sub arrays and join them into strings using a comma as the glue
+// 	s=s.map(e=>e.join(','))
+// 	// //iterate over the array and create a string using ')(' as the glue
+// 	s.join(')(')
+// 	// //return '(' + created string + ')'
+// 	// return '(' + s + ')'
+// 	return s
+// }
+// console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"))
+
+
+
+
+//failed again, will try again...
+
+// function meeting(s) {
+//   let string = s.toUpperCase().split(';')
+//                 .map(x => x.split(':').reverse().join(', '))
+//                 .sort()
+//   //               .join(')(')
+//   // return '(' + string + ')'
+//   return string
+// }
+// console.log(meeting("Fred:Corwill;Wilfred:Corwill;Barney:Tornbull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill"))
+
+
+// //what I don't understand is they have no code to sort by first name if the last name is the same.
+
+// //I like this code a little better:
+// function meeting(s) {
+//     return s.split(';').map(i => i.toUpperCase().split(':').reverse().join(', ')).sort().map(i => '(' + i + ')').join('')
+// }
 
 
 
