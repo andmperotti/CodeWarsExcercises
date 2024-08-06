@@ -21,3 +21,19 @@ function countPositivesSumNegatives(input) {
 return result
 }
 console.log(countPositivesSumNegatives(null))
+
+
+//8/5/24 I went over this challenge again and came up with this code:
+function countPositivesSumNegatives(input){
+    return input!==null&&input.filter(e=>e!==0).length>0 ? 
+    [input.filter(e=>e>0).length, input.filter(e=>e<0).reduce((acc,cur)=>acc+cur)] 
+    : []
+}
+//which is a lot shorter, and includes an additional check on the argument arrays values in relation to if they are === 0, because "0 is neither positive nor negative".
+
+//looking at second best practice answer which uses very similar code, I did not use an intial value in the reduce method when summing the negative values together, which now I see is needed, so I'll add this challenge to my Anki.
+
+//second best practice:
+// function countPositivesSumNegatives(input) {
+//     return input && input.length ? [input.filter(p => p > 0).length, input.filter(n => n < 0).reduce((a, b) => a + b, 0)] : [];
+// }
